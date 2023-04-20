@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试xss攻击</title>
+</head>
+<body>
+  <form action="" method="post">  <!-- <form>表示文档的服务器区域，此区域中包含一个Web站点的信息控件，用于向Web服务器区域提交 -->
+    <input type="text" name="name" />
+    <input type="submit" value="提交">
+  </form>
+</body>
+</html>
