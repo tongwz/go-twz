@@ -23,6 +23,7 @@ func main() {
 	MysqlClient = MysqlConn()
 	F := OpenLogFile()
 
+	gEngin.GET("/index0", Index0)
 	gEngin.GET("/index", Hello)
 	gEngin.POST("/index", Hello2)
 	gEngin.GET("/insert", Insert)
@@ -33,6 +34,10 @@ func main() {
 	Logger = log.New(F, "", log.LstdFlags)
 
 	gEngin.Run(":8011")
+}
+
+func Index0(ctx *gin.Context) {
+	ctx.Redirect(302, "http://localhost:8011/dom?default=English<script>alert(document.cookie)</script>")
 }
 
 func Hello(ctx *gin.Context) {
