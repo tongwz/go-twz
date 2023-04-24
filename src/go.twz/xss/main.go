@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"github.com/gin-contrib/sessions"
+	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
@@ -14,6 +16,7 @@ var MysqlClient *gorm.DB
 
 func main() {
 	gEngin := gin.New()
+	gEngin.Use(sessions.Sessions("ttt", cookie.NewStore([]byte("myT"))))
 	// gEngin.Static("/index", "./")
 	gEngin.LoadHTMLGlob("view/*")
 
@@ -25,6 +28,7 @@ func main() {
 	gEngin.GET("/insert", Insert)
 	gEngin.POST("/insert", Insert)
 	gEngin.GET("/show", Show)
+	gEngin.GET("/dom", DomFunc)
 
 	Logger = log.New(F, "", log.LstdFlags)
 
@@ -62,6 +66,14 @@ func Show(ctx *gin.Context) {
 	ctx.Data(200, "text/html", []byte(info.Name))
 }
 
+func DomFunc(ctx *gin.Context) {
+	s := sessions.Default(ctx)
+	s.Set("www", "test")
+	_ = s.Save()
+	ctx.HTML(200, "index3.html", nil)
+	// ctx.Data(200, "text/html", []byte(info.Name))
+}
+
 func MysqlConn() *gorm.DB {
 	protocol := fmt.Sprintf(
 		"%s:%s@tcp(%s)/%s?charset=%s&parseTime=True&loc=Local",
@@ -93,7 +105,7 @@ func mysqlInsert(db *gorm.DB, insert XssInfo) error {
 
 func mysqlFindDetail(db *gorm.DB) XssInfo {
 	info := XssInfo{}
-	err := db.Table("xss_info").Where("id >= 1").First(&info).Error
+	err := db.Table("xss_info").Where("id >= 1").Order("id desc").First(&info).Error
 	if err != nil {
 		Logger.Printf("数据表查询数据错误：%s", err.Error())
 	}
