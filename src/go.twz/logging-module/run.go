@@ -25,6 +25,7 @@ func main() {
 func writeLog() {
 	time.Sleep(time.Second * time.Duration(rand.Intn(2)))
 	Logger.Printf("某个 情况 %s", time.Now().Format("2006-01-02 15:04:05"))
+	Logger.Printf("我是来捣乱的，我是来捣乱我是来捣乱的，我是来捣乱我是来捣乱的，我是来捣乱， wo shi lai dao luande %s", time.Now().Format("2006-01-02 15:04:05"))
 }
 
 func OpenLogFile() *os.File {
