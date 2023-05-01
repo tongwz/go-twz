@@ -80,6 +80,3 @@ func ForNew3() {
 func ForNew4() {
 	fmt.Printf("forNew 4")
 }
-func Slave3() {
-	fmt.Printf("slave 3")
-}
