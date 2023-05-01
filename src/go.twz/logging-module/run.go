@@ -48,27 +48,3 @@ func OpenLogFile() *os.File {
 	}
 	return handle
 }
-
-func ForNew1() {
-	fmt.Printf("forNew 1")
-}
-
-func ForNew2() {
-	fmt.Printf("forNew 2")
-}
-
-func Slave1() {
-	fmt.Printf("slave 1")
-}
-
-func Slave2() {
-	fmt.Printf("slave 2")
-}
-
-func Slave3() {
-	fmt.Printf("slave 3")
-}
-
-func Slave4() {
-	fmt.Printf("slave 3")
-}
