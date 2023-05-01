@@ -56,6 +56,7 @@ func ForNew1() {
 func ForNew2() {
 	fmt.Printf("forNew 2")
 }
+
 func Slave1() {
 	fmt.Printf("slave 1")
 }
