@@ -79,6 +79,3 @@ func Slave3() {
 func Slave4() {
 	fmt.Printf("slave 3")
 }
-func ForNew3() {
-	fmt.Printf("forNew 3")
-}
