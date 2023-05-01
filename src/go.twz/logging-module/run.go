@@ -52,3 +52,7 @@ func OpenLogFile() *os.File {
 func ForNew1() {
 	fmt.Printf("forNew 1")
 }
+
+func ForNew2() {
+	fmt.Printf("forNew 2")
+}
