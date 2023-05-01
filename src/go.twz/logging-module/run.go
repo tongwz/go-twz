@@ -48,3 +48,7 @@ func OpenLogFile() *os.File {
 	}
 	return handle
 }
+
+func Slave1() {
+	fmt.Printf("slave 1")
+}
