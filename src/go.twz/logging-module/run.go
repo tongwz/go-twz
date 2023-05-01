@@ -48,3 +48,7 @@ func OpenLogFile() *os.File {
 	}
 	return handle
 }
+
+func ForNew1() {
+	fmt.Printf("forNew 1")
+}
