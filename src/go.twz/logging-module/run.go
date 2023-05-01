@@ -64,3 +64,7 @@ func Slave1() {
 func Slave2() {
 	fmt.Printf("slave 2")
 }
+
+func Slave3() {
+	fmt.Printf("slave 3")
+}
