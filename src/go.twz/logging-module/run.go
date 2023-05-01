@@ -48,3 +48,7 @@ func OpenLogFile() *os.File {
 	}
 	return handle
 }
+
+func SS1() {
+	fmt.Println("ss1")
+}
