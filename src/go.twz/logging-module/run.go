@@ -68,3 +68,7 @@ func Slave2() {
 func ForNew3() {
 	fmt.Printf("forNew 3")
 }
+
+func ForNew4() {
+	fmt.Printf("forNew 4")
+}
