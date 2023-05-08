@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"unsafe"
+)
 
 type MyBook interface {
 	FmtBook()
@@ -19,12 +22,7 @@ func setOneBook() *Book {
 	return nil
 }
 
-func FindFoo(a interface{}) {
-	if a == nil {
-		fmt.Printf("a == nil %#v ", a)
-	} else {
-		fmt.Printf("a != nil %#v ", a)
-	}
+type FindFoo interface {
 }
 
 func main() {
@@ -37,7 +35,18 @@ func main() {
 		aBook.FmtBook()
 	}
 
-	var p *int = nil
+	var p FindFoo
+	var q *int = nil
+	p = q
 
-	FindFoo(p)
+	length := unsafe.Sizeof(p)
+	length2 := unsafe.Sizeof(&p)
+	if p == nil {
+		fmt.Printf("a == nil %#v  \n", p)
+	} else {
+		fmt.Printf("a != nil %#v  \n", p)
+	}
+
+	fmt.Printf("interface长度是：%d \n", length)
+	fmt.Printf("&interface长度是：%d \n", length2)
 }
