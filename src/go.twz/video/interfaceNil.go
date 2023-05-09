@@ -48,7 +48,7 @@ func main() {
 	}
 
 	fmt.Printf("interface长度是：%d \n", length)
-	
+
 	var b MyBook
 	length2 := unsafe.Sizeof(b)
 	fmt.Printf("interface长度是：%d \n", length2)
