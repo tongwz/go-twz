@@ -40,7 +40,7 @@ func main() {
 	p = q
 
 	length := unsafe.Sizeof(p)
-	length2 := unsafe.Sizeof(&p)
+
 	if p == nil {
 		fmt.Printf("a == nil %#v  \n", p)
 	} else {
@@ -48,5 +48,9 @@ func main() {
 	}
 
 	fmt.Printf("interface长度是：%d \n", length)
-	fmt.Printf("&interface长度是：%d \n", length2)
+	
+	var b MyBook
+	length2 := unsafe.Sizeof(b)
+	fmt.Printf("interface长度是：%d \n", length2)
+	// b.FmtBook()
 }
