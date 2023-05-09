@@ -53,5 +53,5 @@ func main() {
 	length2 := unsafe.Sizeof(b)
 	fmt.Printf("interface长度是：%d \n", length2)
 	// b.FmtBook()
-	
+
 }
