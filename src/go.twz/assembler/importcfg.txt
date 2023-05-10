@@ -1,0 +1,1 @@
+packagefile fmt=fmt.a
