@@ -1,7 +1,17 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"io"
+	"os"
+	"time"
+)
 
+// 2>&1
 func main() {
-	fmt.Println(1)
+	for {
+		fmt.Println("标准输出~")
+		io.WriteString(os.Stderr, "标准错误输出~ \n")
+		time.Sleep(time.Second * 1)
+	}
 }
