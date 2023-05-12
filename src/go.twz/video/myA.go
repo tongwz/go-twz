@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-// 2>&1
+// 2>&11
 func main() {
 	for {
 		fmt.Println("标准输出~")
