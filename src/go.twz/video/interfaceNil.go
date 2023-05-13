@@ -15,10 +15,9 @@ type Book struct {
 
 func (b *Book) FmtBook() {
 	fmt.Printf("我们在这里打印信息 \n")
-	// fmt.Printf("我们在这里打印书名：%s \n", b.name)
 }
 
-func setOneBook() *Book {
+func setOneBook() MyBook {
 	return nil
 }
 
@@ -42,9 +41,9 @@ func main() {
 	length := unsafe.Sizeof(p)
 
 	if p == nil {
-		fmt.Printf("a == nil %#v  \n", p)
+		fmt.Printf("p == nil %#v  \n", p)
 	} else {
-		fmt.Printf("a != nil %#v  \n", p)
+		fmt.Printf("p != nil %#v  \n", p)
 	}
 
 	fmt.Printf("interface长度是：%d \n", length)
@@ -55,3 +54,5 @@ func main() {
 	// b.FmtBook()
 
 }
+
+// go tool compile -S -p twzz -importcfg importcfg.txt interfaceNil.go
