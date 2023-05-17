@@ -1,5 +1,7 @@
 package main
 
-func main() {
+import "strings"
 
+func main() {
+	strings.Index("ttt", "t")
 }
