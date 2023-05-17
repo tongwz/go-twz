@@ -1,6 +1,6 @@
 package main
 
-import "learn/pkg"
+import "learn01/pkg"
 
 // import pkg "int.go"
 
