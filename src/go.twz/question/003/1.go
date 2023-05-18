@@ -4,7 +4,7 @@ import "fmt"
 
 func main() {
 	str := "122344556767dfgdhfghjghkjasfs"
-	str2 := "123456789a"
+	str2 := "我到此一游哈哈1"
 
 	myReverseStr(&str)
 
