@@ -15,6 +15,8 @@ func main() {
 	} else {
 		fmt.Println(s2)
 	}
+
+	fmt.Printf("我对应的unicode：%d \n", '我')
 }
 
 func changeStr(s string) (string, bool) {
