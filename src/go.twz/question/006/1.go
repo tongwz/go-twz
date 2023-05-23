@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	str := "R10(RF)F"
+	str := "R10(RF)2(FF)"
 	newStr := splitString(str)
 	fmt.Println(newStr)
 	x, y := operation(newStr)
@@ -39,7 +39,7 @@ func splitString(str string) string {
 		}
 		if slice[i] == '(' {
 			tmpComm, lenTmpComm := RepeatStr(slice[i+1:])
-			i += lenTmpComm + 1
+			i += lenTmpComm
 
 			newStr += strings.Repeat(tmpComm, tmpNum)
 		} else {
