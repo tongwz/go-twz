@@ -104,7 +104,7 @@ func resolveCmd(s string) []string {
 上面的代码有2个问题 1 只支持小雨10的整数重复， 2 括号里不能再有括号的问题
 */
 func main() {
-	s := "R10(RF)2(FF)"
+	s := "R22(LF)"
 
 	fmt.Println(run(s))
 }
