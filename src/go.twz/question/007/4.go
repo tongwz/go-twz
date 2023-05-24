@@ -12,5 +12,5 @@ func (p *People) String() string {
 
 func main() {
 	p := &People{}
-	p.String()
+	fmt.Println(p.String())
 }
