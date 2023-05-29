@@ -1,11 +1,13 @@
 package main
 
-import _ "unsafe"
+import (
+	_ "unsafe"
+)
 import _ "linkname/pk"
 
 func main() {
-	myPrint("tongWz")
+	printMySelf("hello world!")
 }
 
-//go:linkname myPrint linkname/pk.printMyInfo
-func myPrint(a string)
+//go:linkname printMySelf linkname/pk.myPrint
+func printMySelf(a string)
