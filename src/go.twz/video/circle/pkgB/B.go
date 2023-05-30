@@ -1,12 +1,12 @@
 package pkgB
 
 import (
-	"circle/pkgA"
+	"circle/pkgC"
 	"fmt"
 )
 
 type B struct {
-	C *pkgA.CS
+	C *pkgC.CS
 }
 
 func (b *B) MyPrint() {

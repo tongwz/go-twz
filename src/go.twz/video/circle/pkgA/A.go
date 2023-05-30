@@ -1,17 +1,19 @@
 package pkgA
 
-import "circle/pkgB"
+import (
+	"circle/pkgB"
+	"circle/pkgC"
+)
 
-// type MyInterface interface {
-// 	MyPrint()
-// }
+type MyInterface interface {
+	MyPrint()
+}
 
 type A struct {
-	C *CS
+	C *pkgC.CS
 	B *pkgB.B
 }
 
 func (a *A) MyPrint() {
-	a.B = new(pkgB.B)
 	a.B.MyPrint()
 }

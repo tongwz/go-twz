@@ -1,4 +1,4 @@
-package pkgA
+package pkgC
 
 type CS struct {
 	Name    string
