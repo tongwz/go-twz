@@ -11,7 +11,7 @@ func main() {
 	ch <- 1
 	run(ch)
 	time.Sleep(time.Second * 1)
-	// time.runtimeNano()
+	time.runtimeNano()
 
 }
 

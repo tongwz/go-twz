@@ -1,10 +1,10 @@
 package main
 
 func main() {
-	split()
+	MySplit()
 }
 
 //go:nosplit
-func split() int {
-	return split()
+func MySplit() int {
+	return MySplit()
 }

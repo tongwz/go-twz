@@ -19,7 +19,7 @@ func SetValue(delta int32) {
 	for {
 		v := value
 		// fmt.Printf("打印： %#v", atomic.CompareAndSwapInt32(&value, v, (v+delta)))
-		if atomic.CompareAndSwapInt32(&value, v+1, delta) {
+		if atomic.CompareAndSwapInt32(&value, v, (v + delta)) {
 			break
 		}
 	}
