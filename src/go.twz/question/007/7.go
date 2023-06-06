@@ -24,11 +24,13 @@ func (p *Project) exec(msgchan chan interface{}) {
 func (p *Project) run(msgchan chan interface{}) {
 	i := 0
 	for {
-		p.exec(msgchan)
+		go p.exec(msgchan)
 		fmt.Println("我们循环了", i)
 		i++
 		time.Sleep(time.Second * 2)
 	}
+
+	fmt.Println("aaa")
 }
 
 func (p *Project) Main() {
