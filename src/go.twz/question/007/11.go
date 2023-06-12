@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	runtime.GOMAXPROCS(1)
+	// runtime.GOMAXPROCS(1)
 	var i byte
 	go func() {
 		for i = 0; i <= 255; i++ {
