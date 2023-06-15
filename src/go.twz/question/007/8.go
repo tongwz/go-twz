@@ -12,22 +12,11 @@ func main() {
 	}
 
 	go func() {
-		// for a := range abc {
-		// 	fmt.Println("a: ", a)
-		// }
-
-		for {
-			select {
-			case a, ok := <-abc:
-				if ok {
-					fmt.Println("A: ", a)
-				} else {
-					fmt.Println("AA: ", a)
-				}
-			}
+		for a := range abc {
+			fmt.Println("a: ", a)
 		}
 	}()
 	close(abc)
 	fmt.Println("close")
-	time.Sleep(time.Microsecond * 1)
+	time.Sleep(time.Second * 1)
 }
