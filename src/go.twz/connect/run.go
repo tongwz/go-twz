@@ -8,18 +8,20 @@ import (
 )
 
 func main() {
+	fmt.Printf("开始了~\n")
 	protocol := fmt.Sprintf(
 		"%s:%s@tcp(%s)/%s?charset=%s&parseTime=True&loc=Local",
 		"root",
-		"123456",
+		"tongwz",
 		"127.0.0.1:3306",
-		"transfer",
+		"xss",
 		"utf8mb4",
 	)
 
 	gDb, err := gorm.Open("mysql", protocol)
 	if err != nil {
-		_ = fmt.Errorf("mysql连接错误：%s", err.Error())
+		// err = fmt.Errorf("mysql连接错误：%s", err.Error())
+		fmt.Printf("mysql连接错误：%s", err.Error())
 		return
 	}
 
@@ -38,4 +40,5 @@ func main() {
 
 	<-ch
 
+	fmt.Printf("竟然执行完了？\n")
 }
