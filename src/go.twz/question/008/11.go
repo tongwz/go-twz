@@ -14,15 +14,16 @@ func (stu *Studentx) Show() {
 
 }
 
-func live() Peoplex {
+func live() *Studentx {
 	var stu *Studentx
 	return stu
 }
 
 func main() {
-	if live() == nil {
-		fmt.Println("AAAAAAA")
+	tmp := live()
+	if tmp == nil {
+		fmt.Println("AAAAAAA", tmp)
 	} else {
-		fmt.Println("BBBBBBB")
+		fmt.Println("BBBBBBB", tmp)
 	}
 }
