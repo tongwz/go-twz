@@ -1,6 +1,9 @@
 package main
 
-import "sync"
+import (
+	"fmt"
+	"sync"
+)
 
 type threadSafeSet struct {
 	s chan interface{}
@@ -29,4 +32,18 @@ func (set *threadSafeSet) Iter() <-chan interface{} {
 
 	}()
 	return ch
+}
+
+func main() {
+	th := new(threadSafeSet)
+	th.s = make(chan interface{})
+	go func() {
+		th.s <- "ttt"
+	}()
+
+	ch := th.Iter()
+
+	info := <-ch
+
+	fmt.Printf("获取的值是： %#v \n", info)
 }

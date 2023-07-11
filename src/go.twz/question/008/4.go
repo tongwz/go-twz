@@ -1,18 +1,18 @@
 package main
 
-type People struct{}
+type People1 struct{}
 
-func (p *People) ShowA() {
+func (p *People1) ShowA() {
 	println("showA")
 	// fmt.Printf("当前对象：%#v \n", p)
 	p.ShowB()
 }
-func (p *People) ShowB() {
+func (p *People1) ShowB() {
 	println("showB")
 }
 
 type Teacher struct {
-	P1 People
+	P1 People1
 	People2
 }
 
