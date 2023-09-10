@@ -14,6 +14,7 @@ var pool = sync.Pool{
 	}}
 
 func main() {
+	// runtime.GOMAXPROCS(1)
 	go func() {
 		for {
 			processRequest(1 << 28) // 256MiB
