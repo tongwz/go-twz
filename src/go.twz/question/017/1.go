@@ -11,9 +11,9 @@ func main() {
 	for i := 11; i < 125; i++ {
 		sData = append(sData, i)
 	}
-	ctx, cancel := context.WithTimeout(context.Background(), time.Second*5)
+	ctx, cancel := context.WithTimeout(context.Background(), time.Second*15)
 	isFind := make(chan int)
-	go FindNeedNum(ctx, sData, 109, isFind)
+	go FindNeedNum(ctx, sData, 100, isFind)
 	for {
 		select {
 		case val := <-isFind:
@@ -22,6 +22,7 @@ func main() {
 				cancel()
 				time.Sleep(time.Second * 3)
 				fmt.Println("结束")
+				return
 			}
 		}
 	}
@@ -44,6 +45,11 @@ func FindNeedNum(ctx context.Context, sData []int, num int, isFind chan int) {
 				default:
 					// 按照索引查询数据
 					for j := gNum * times; j < gNum*(times+1); j++ {
+						time.Sleep(time.Second * 1)
+						if j >= sLen {
+							return
+						}
+						fmt.Println(sData[j])
 						if sData[j] == num {
 							isFind <- j
 							return
