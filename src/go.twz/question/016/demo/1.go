@@ -22,6 +22,27 @@ func reverseList(head *listNode) *listNode {
 	return pre
 }
 
+func reverseList2(head *listNode) *listNode {
+	if head.Next == nil {
+		return head
+	}
+	res := reverseList2(head.Next)
+	head.Next.Next = head
+	head.Next = nil
+	return res
+}
+
+func reverseList3(head *listNode) *listNode {
+	var newNext *listNode
+	for head != nil {
+		next := head.Next
+		head.Next = newNext
+		newNext = head
+		head = next
+	}
+	return newNext
+}
+
 func main() {
 	var myList = &listNode{
 		Value: 1,
@@ -51,6 +72,13 @@ func main() {
 
 	fmtListNode(newList)
 
+	newList = reverseList2(newList)
+
+	fmtListNode(newList)
+
+	newList = reverseList3(newList)
+
+	fmtListNode(newList)
 }
 
 func fmtListNode(tmpNode *listNode) {
