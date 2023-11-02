@@ -7,6 +7,10 @@ import (
 	"time"
 )
 
+/**
+ * @note: 当主协程不被阻塞 子协程产生死锁  不会影响到程序报错和panic
+ * @date: 2023/11/2 11:25
+**/
 var MuLock sync.Mutex
 
 var ThisMyToken *MyToken
