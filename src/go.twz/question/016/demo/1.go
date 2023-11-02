@@ -7,6 +7,30 @@ type listNode struct {
 	Next  *listNode
 }
 
+func reverseByKey(head *listNode, k int) *listNode {
+	tmpHead := head
+	for i := 0; i < k-1; i++ {
+		if tmpHead == nil {
+			break
+		}
+		tmpHead = tmpHead.Next
+	}
+	if tmpHead == nil {
+		return head
+	}
+
+	nextHead := tmpHead.Next
+	tmpHead.Next = nil
+
+	newList := reverseList(head)
+
+	leaveList := reverseByKey(nextHead, k)
+
+	head.Next = leaveList
+
+	return newList
+}
+
 func reverseList(head *listNode) *listNode {
 	var pre *listNode
 	var next *listNode
@@ -65,20 +89,20 @@ func main() {
 	myList.Next.Next.Next.Next.Next.Next = &listNode{
 		Value: 7,
 	}
+	myList.Next.Next.Next.Next.Next.Next.Next = &listNode{
+		Value: 8,
+	}
 
 	fmtListNode(myList)
 
 	newList := reverseList(myList)
 
-	fmtListNode(newList)
+	newList = reverseByKey(newList, 4)
 
-	newList = reverseList2(newList)
-
-	fmtListNode(newList)
-
-	newList = reverseList3(newList)
+	newList = reverseList(newList)
 
 	fmtListNode(newList)
+
 }
 
 func fmtListNode(tmpNode *listNode) {
