@@ -57,10 +57,13 @@ func (m *MyToken) CreateToken(appId string) (token *Token, err error) {
 
 func (m *MyToken) SetTokenMap(token *Token) {
 	m.mtx.Lock()
-	// fmt.Printf("获得锁, %p \n", m)
-	defer m.mtx.Lock()
 
+	defer m.mtx.Lock()
+	print("获得锁0 \n")
+	m.TokenMap = make(map[string]*Token)
+	print("获得锁1 \n")
 	m.TokenMap[token.AppId] = token
+	print("获得锁2 \n")
 }
 
 func main() {
