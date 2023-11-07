@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"runtime"
 	"strconv"
 	"sync"
 	"time"
@@ -60,7 +61,7 @@ func (m *MyToken) SetTokenMap(token *Token) {
 
 	defer m.mtx.Lock()
 	print("获得锁0 \n")
-	m.TokenMap = make(map[string]*Token)
+	// m.TokenMap = make(map[string]*Token)
 	print("获得锁1 \n")
 	m.TokenMap[token.AppId] = token
 	print("获得锁2 \n")
@@ -76,6 +77,7 @@ func main() {
 		if i > 3 {
 			i = 0
 		}
+		fmt.Printf("我们的协程总数是：%d \n", runtime.NumGoroutine())
 	}
 }
 

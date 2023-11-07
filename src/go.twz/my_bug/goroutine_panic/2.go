@@ -14,7 +14,7 @@ func main() {
 func LockFunc() {
 	var mu sync.Mutex
 	mu.Lock()
-	defer mu.Unlock() // 确保即使发生 panic 也会执行 Unlock()
+	defer mu.Lock() // 确保即使发生 panic 也会执行 Unlock()
 
 	// 在这里编写可能导致 panic 的代码
 	panic("Something went wrong!")
