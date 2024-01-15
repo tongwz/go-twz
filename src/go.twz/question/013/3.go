@@ -8,29 +8,9 @@ import (
 )
 
 func main() {
-	for i := 0; i < 1; i++ {
-		go SetFunc()
-	}
-	time.Sleep(time.Second * 3)
-	numGoroutines := runtime.NumGoroutine()
-	fmt.Println("当前程序中有", numGoroutines, "个活跃的 goroutine")
-
-	var m runtime.MemStats
-	runtime.ReadMemStats(&m)
-	fmt.Printf("Alloc = %v iB \n", m.Alloc)
-
-	runtime.GC()
-
-	runtime.ReadMemStats(&m)
-	fmt.Printf("Alloc = %v iB \n", m.Alloc)
-
-	time.Sleep(time.Second * 3)
-}
-
-func SetFunc() {
 	wg := sync.WaitGroup{}
 	c := make(chan struct{})
-	for i := 0; i < 3; i++ {
+	for i := 0; i < 10; i++ {
 		wg.Add(1)
 		go func(num int, close <-chan struct{}) {
 			defer wg.Done()
@@ -38,13 +18,26 @@ func SetFunc() {
 			// fmt.Println(num)
 		}(i, c)
 	}
-	numGoroutines := runtime.NumGoroutine()
-	fmt.Println("当前程序中有", numGoroutines, "个活跃的 goroutine")
+	// numGoroutines := runtime.NumGoroutine()
+	// fmt.Println("当前程序中有", numGoroutines, "个活跃的 goroutine")
 
-	if WaitTimeout(&wg, time.Second*2) {
+	if WaitTimeout(&wg, time.Second*1) {
 		close(c)
 		// fmt.Println("timeout exit")
 	}
+	time.Sleep(time.Second)
+	// numGoroutines = runtime.NumGoroutine()
+	// fmt.Println("当前程序中有", numGoroutines, "个活跃的 goroutine")
+	var m runtime.MemStats
+	runtime.ReadMemStats(&m)
+	fmt.Printf("%v iB \n", m.Alloc)
+
+	runtime.GC()
+
+	runtime.ReadMemStats(&m)
+	fmt.Printf("%v iB \n", m.Alloc)
+
+	time.Sleep(time.Second * 1)
 }
 
 func WaitTimeout(wg *sync.WaitGroup, timeout time.Duration) bool {
